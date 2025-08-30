@@ -1,28 +1,24 @@
-import { useState } from 'react'
+import React from 'react';
+import Nav from './components/Nav';
+import Hero from './components/Hero';
+import ProjectGrid from './components/ProjectGrid';
+import Footer from './components/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen bg-black text-white font-inter overflow-x-hidden">
+      {/* Background subtle grid */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)", backgroundSize: '24px 24px' }} />
 
-export default App
+      <Nav />
+      <Hero />
+      <main className="relative z-10">
+        <ProjectGrid />
+      </main>
+      <Footer />
+
+      {/* Soft noise overlay */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 mix-blend-soft-light opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'120\' height=\'120\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.7\' numOctaves=\'2\' stitchTiles=\'stitch\'/></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23n)\'/></svg>")' }} />
+    </div>
+  );
+}
